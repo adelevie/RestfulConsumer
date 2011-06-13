@@ -1,3 +1,5 @@
+package com.example.tools;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -5,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -38,7 +39,13 @@ public class RestfulConsumer {
 	}
 
 	public String getFormat() {
-		return format;
+		String result;
+		if (format == null) {
+			result = "";
+		} else {
+			result = "." + format;
+		}
+		return result;
 	}
 	
 	public String formatGetParams(ArrayList<NameValuePair> params) throws UnsupportedEncodingException {
@@ -62,11 +69,11 @@ public class RestfulConsumer {
 	}
 	
 	public String buildPostUrl(String path) {
-		return this.getBaseURI() + path + "." + this.getFormat();
+		return this.getBaseURI() + path + this.getFormat();
 	}
 	
 	public String buildGetUrl(String path, ArrayList <NameValuePair> params) throws Exception {		
-		return this.getBaseURI() + path + "." + this.getFormat() + formatGetParams(params);
+		return this.getBaseURI() + path + this.getFormat() + formatGetParams(params);
 	}
 	
 	public String get(String path, ArrayList <NameValuePair> params) throws Exception {		
@@ -150,3 +157,4 @@ public class RestfulConsumer {
         return sb.toString();
     }	
 }
+

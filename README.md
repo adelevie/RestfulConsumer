@@ -2,7 +2,7 @@
 RestfulConsumer
 ===============
 
-Heavily inspired by Jon Nunemaker's HTTParty, RestfulConsumer tries to make API consumption as simple as possible--at least on the Java side of the world.
+Heavily inspired by John Nunemaker's [HTTParty](https://github.com/jnunemaker/httparty), RestfulConsumer tries to make API consumption as simple as possible--at least on the Java side of the world.
 
 Usage
 -----
@@ -31,4 +31,13 @@ Usage
 	   JSONArray tweets = client.userTimeline("adelevie");
 	   JSONObject user = client.showUser("adelevie");
 	*/
+
+Limitations
+-----------
+
+RestfulConsumer is brand new, and can be rough around the edges. Currently, only GET and POST requests are supported. Nested URL paramaters will be supported when I can wrap my head around Java's data structures.
+
+### Thanks
+* [John Nunemaker](http://railstips.org/about/), for creating HTTParty
+* [Luke Lowrey](http://lukencode.com/about), whose [RestClient](http://lukencode.com/2010/04/27/calling-web-services-in-android-using-httpclient/) class I borrowed many snippets from
 
