@@ -37,10 +37,24 @@ Usage
 
 ### POSTing to a Rails back-end
 
+1. Create a simple Rails app
+	rails new SomeApp
+	cd SomeApp
+	rails g scaffold Widget name:string
+	rake db:migrate
+	rails server
+
+In `app/controllers/application_controller.rb`, remove `protect_from_forgery`.
+
+2. Use localtunnel (do this in a new tab, still cd'd to SomeApp)
+	gem install localtunnel
+	localtunnel 3000
+
+3. Java code
 	public class PostExample extends RestfulConsumer {
 	
 	  public PostExample() {
-		  setBaseURI("http://3pna.localtunnel.com");
+		  setBaseURI("http://____.localtunnel.com"); //localtunnel URL goes here
 		  setFormat("xml");
 	  }
 	
@@ -59,7 +73,7 @@ Usage
 	    String response = client.createWidget("Foo");
 	 */
 
-Notice that by following the `new BasicNameValuePair("model_name[attribute_name]", attribute_value)` convention, you don't have to change a single line in your Rails controllers. `ModelName.new(params[:model_name])` just works.
+Notice that by following the `new BasicNameValuePair(model_name[attribute_name], attribute_value)` convention, you don't have to change a single line in your Rails controllers. `ModelName.new(params[:model_name])` just works.
 
 
 Limitations
