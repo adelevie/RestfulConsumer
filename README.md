@@ -37,7 +37,7 @@ Usage
 
 ### POSTing to a Rails back-end
 
-1. Create a simple Rails app
+Create a simple Rails app
 
 	rails new SomeApp
 	cd SomeApp
@@ -47,12 +47,12 @@ Usage
 
 In `app/controllers/application_controller.rb`, remove `protect_from_forgery`.
 
-2. Use localtunnel (do this in a new tab, still cd'd to SomeApp)
+Use localtunnel (do this in a new tab, still cd'd to SomeApp)
 
 	gem install localtunnel
 	localtunnel 3000
 
-3. Java code
+Java code
 
 	public class PostExample extends RestfulConsumer {
 	
