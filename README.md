@@ -7,7 +7,10 @@ Heavily inspired by John Nunemaker's [HTTParty](https://github.com/jnunemaker/ht
 Usage
 -----
 
+### Twitter
+
 	public class Twitter extends RestfulConsumer {
+	
 	  public Twitter() {
 		  this.setBaseURI("http://api.twitter.com/1");
 		  this.setFormat("json");
@@ -32,10 +35,37 @@ Usage
 	   JSONObject user = client.showUser("adelevie");
 	*/
 
+### POSTing to a Rails back-end
+
+	public class PostExample extends RestfulConsumer {
+	
+	  public PostExample() {
+		  setBaseURI("http://3pna.localtunnel.com");
+		  setFormat("xml");
+	  }
+	
+	  public String showWidget(String widgetID) throws Exception {
+		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
+		  return this.get("/widgets/" + widgetID, options);
+	  }
+	
+	  public String createWidget(String widgetName) throws Exception {
+		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
+		  options.add(new BasicNameValuePair("widget[name]", widgetName));
+		  return this.post("/widgets", options);
+	  }
+	}
+	 /* PostExample client = new PostExample();
+	    String response = client.createWidget("Foo");
+	 */
+
+Notice that by following the `new BasicNameValuePair("model_name[attribute_name]", attribute_value)` convention, you don't have to change a single line in your Rails controllers. `ModelName.new(params[:model_name])` just works.
+
+
 Limitations
 -----------
 
-RestfulConsumer is brand new, and can be rough around the edges. Currently, only GET and POST requests are supported. Nested URL paramaters will be supported when I can wrap my head around Java's data structures.
+RestfulConsumer is brand new, and can be rough around the edges. Currently, only GET and POST requests are supported.
 
 ### Thanks
 * [John Nunemaker](http://railstips.org/about/), for creating HTTParty
