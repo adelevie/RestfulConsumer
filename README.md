@@ -7,8 +7,7 @@ Heavily inspired by Jon Nunemaker's HTTParty, RestfulConsumer tries to make API 
 Usage
 -----
 
-  public class Twitter extends RestfulConsumer {
-
+	public class Twitter extends RestfulConsumer {
 	  public Twitter() {
 		  this.setBaseURI("http://api.twitter.com/1");
 		  this.setFormat("json");
@@ -26,5 +25,5 @@ Usage
 		  return new JSONObject(this.get("/users/show", options));		
 	  }
 	
-  }
+	}
 
