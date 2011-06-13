@@ -2,7 +2,7 @@
 RestfulConsumer
 ===============
 
-Heavily inspired by Jon Nunemaker's HTTParty, RestfulConsumer tries to make API consumption as simple as possible for the Java side of things.
+Heavily inspired by Jon Nunemaker's HTTParty, RestfulConsumer tries to make API consumption as simple as possible--at least on the Java side of the world.
 
 Usage
 -----
@@ -26,4 +26,9 @@ Usage
 	  }
 	
 	}
+	
+	/* Twitter client = new Twitter();
+	   JSONArray tweets = client.userTimeline("adelevie");
+	   JSONObject user = client.showUser("adelevie");
+	*/
 
