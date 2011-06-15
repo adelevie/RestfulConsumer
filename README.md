@@ -77,7 +77,7 @@ Java code
 Notice that by following the `new BasicNameValuePair(model_name[attribute_name], attribute_value)` convention, you don't have to change a single line in your Rails controllers. `ModelName.new(params[:model_name])` just works.
 
 ### HTTP Basic Auth
-Warning: HTTP Basic Auth is only as secure as its transport mechanism. HTTP, which is vulnerable to traffic sniffers. I found this [blog post](http://www.skorks.com/2009/08/is-basic-authentication-really-insecure/) to be particularly useful in evaluating risk.
+Warning: HTTP Basic Auth is only as secure as its transport mechanism. HTTP is vulnerable to traffic sniffers. I found this [blog post](http://www.skorks.com/2009/08/is-basic-authentication-really-insecure/) to be particularly useful in evaluating risk.
 
 	public class BasicAuthExample extends RestfulConsumer {
 	  public BasicAuthExample() {
