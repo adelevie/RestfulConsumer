@@ -23,7 +23,7 @@ import org.apache.http.protocol.HTTP;
 
 public class RestfulConsumer {
 	private String baseURI;
-	private String format;
+	//private String format;
 	private String authHash;
 	
 	//getters and setters
@@ -43,7 +43,7 @@ public class RestfulConsumer {
 		return baseURI;
 	}
 	
-	public void setFormat(String format) {
+	/*public void setFormat(String format) {
 		this.format = format;
 	}
 
@@ -55,7 +55,7 @@ public class RestfulConsumer {
 			result = "." + format;
 		}
 		return result;
-	}
+	} */
 	
 	public String formatGetParams(ArrayList<NameValuePair> params) throws UnsupportedEncodingException {
 		String combinedParams = "";
@@ -78,11 +78,11 @@ public class RestfulConsumer {
 	}
 	
 	public String buildPostUrl(String path) {
-		return this.getBaseURI() + path + this.getFormat();
+		return this.getBaseURI() + path;
 	}
 	
 	public String buildGetUrl(String path, ArrayList <NameValuePair> params) throws Exception {		
-		return this.getBaseURI() + path + this.getFormat() + formatGetParams(params);
+		return this.getBaseURI() + path + formatGetParams(params);
 	}
 	
 	public String get(String path, ArrayList <NameValuePair> params) throws Exception {		
