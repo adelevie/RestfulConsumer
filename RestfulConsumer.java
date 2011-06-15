@@ -24,8 +24,17 @@ import org.apache.http.protocol.HTTP;
 public class RestfulConsumer {
 	private String baseURI;
 	private String format;
+	private String authHash;
 	
 	//getters and setters
+	public void setAuthHash(String authHash) {
+		this.authHash = authHash;
+	}
+
+	public String getAuthHash() {
+		return authHash;
+	}
+
 	public void setBaseURI(String baseURI) {
 		this.baseURI = baseURI;
 	}
@@ -79,16 +88,23 @@ public class RestfulConsumer {
 	public String get(String path, ArrayList <NameValuePair> params) throws Exception {		
 		String url = buildGetUrl(path, params);
 		HttpGet request = new HttpGet(url);
+		if (getAuthHash() != null) { 
+			request.setHeader("Authorization", "Basic "+ getAuthHash()); 
+		}
 		String response = executeRequest(request, url).get(0);
 
 		return response;
 	}
+	
 	
 	public String post(String path, ArrayList <NameValuePair> params) throws Exception {
         String url = buildPostUrl(path);
         HttpPost request = new HttpPost(url);
 		request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 		request.addHeader("Content-Type", "application/x-www-form-urlencoded");
+		if (getAuthHash() != null) { 
+			request.setHeader("Authorization", "Basic "+ getAuthHash()); 
+		}
 		String response = executeRequest(request, url).get(0);
 
 		return response;
