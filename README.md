@@ -13,19 +13,18 @@ Usage
 	
 	  public Twitter() {
 		  this.setBaseURI("http://api.twitter.com/1");
-		  this.setFormat("json");
 	  }
 	
 	  public JSONArray userTimeline(String screen_name) throws JSONException, Exception {
 		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
 		  options.add(new BasicNameValuePair("screen_name", screen_name));
-		  return new JSONArray(this.get("/statuses/user_timeline", options));
+		  return new JSONArray(this.get("/statuses/user_timeline.json", options));
 	  }
 	
 	  public JSONObject showUser(String screen_name) throws JSONException, Exception {
 		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
 		  options.add(new BasicNameValuePair("screen_name", screen_name));
-		  return new JSONObject(this.get("/users/show", options));		
+		  return new JSONObject(this.get("/users/show.json", options));		
 	  }
 	
 	}
@@ -58,18 +57,17 @@ Java code
 	
 	  public PostExample() {
 		  setBaseURI("http://____.localtunnel.com"); //localtunnel URL goes here
-		  setFormat("xml");
 	  }
 	
 	  public String showWidget(String widgetID) throws Exception {
 		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
-		  return this.get("/widgets/" + widgetID, options);
+		  return this.get("/widgets/" + widgetID + ".xml", options);
 	  }
 	
 	  public String createWidget(String widgetName) throws Exception {
 		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
 		  options.add(new BasicNameValuePair("widget[name]", widgetName));
-		  return this.post("/widgets", options);
+		  return this.post("/widgets.xml", options);
 	  }
 	}
 	 /* PostExample client = new PostExample();
@@ -84,13 +82,12 @@ Warning: HTTP Basic Auth is only as secure as its transport mechanism. HTTP, whi
 	public class BasicAuthExample extends RestfulConsumer {
 	  public BasicAuthExample() {
 		  setBaseURI("http://____.localtunnel.com"); // localtunnel url goes here
-		  setFormat("xml");
 		  setAuthHash("a Base64-encoded hash goes here. schema is username:password");
 	  }
 	
 	  public String showWidget(String widgetID) throws Exception {
 		  ArrayList<NameValuePair> options = new ArrayList<NameValuePair>();
-		  return this.get("/widgets/" + widgetID, options);
+		  return this.get("/widgets/" + widgetID + ".xml", options);
 	  }
 	}
 
